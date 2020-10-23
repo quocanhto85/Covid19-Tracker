@@ -4,7 +4,6 @@ import { Card, CardTitle, CardText, Container, Row } from 'reactstrap';
 import CountUp from "react-countup";
 
 const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
-
     if (typeof confirmed !== "undefined" && typeof confirmed !== "undefined" && typeof confirmed !== "undefined" && typeof confirmed !== "undefined") {
         return (
             <div className={styles.container}>

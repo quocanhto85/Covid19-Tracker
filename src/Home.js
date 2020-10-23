@@ -1,25 +1,31 @@
-import React, { useEffect, useState } from "react";
-
+import React, { memo, useEffect, useState } from "react";
 import { Cards, Chart, CountryPicker } from "./components";
 import styles from "./Home.module.css"
-import { FetchData } from "./api";
-
+import { fetchData } from "./service/request";
 import corornaImage from "./images/image.png";
+import {Provider, useContexts} from "./context"
 
-const Home = () => {
+const HomeImpl = () => {
     const [data, setData] = useState({});
     const [country, setCountry] = useState("");
+    // const {dataFetch, dailyData, countries, setDataFetch, setDailyData, setCountries} = useContexts();
+    
+
+    useEffect(() => {
+        // console.log(data);
+        // console.log(country);
+    }, [data, country])
 
     useEffect(() => {
     const fetchAPI = async () => {
-        const fetchedData = await FetchData();
+        const fetchedData = await fetchData();
         setData(fetchedData);
     }
     fetchAPI();
     }, []);
 
     const handleCountryChange = async (country) => {
-        const fetchedData = await FetchData(country);
+        const fetchedData = await fetchData(country);
         setData(fetchedData);
         setCountry(country)
     }
@@ -34,4 +40,6 @@ const Home = () => {
     )
 }
 
-export default Home;
+// const Home = () => <Provider><HomeImpl /></Provider>
+
+export default memo(HomeImpl);

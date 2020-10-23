@@ -4,6 +4,8 @@ import { Cards, Chart, CountryPicker } from "./components";
 import styles from "./App.module.css"
 import { FetchData } from "./api";
 
+import corornaImage from "./images/image.png";
+
 const App = () => {
 
     const [data, setData] = useState({});
@@ -26,6 +28,7 @@ const App = () => {
 
     return (
         <div className={styles.container}>
+            <img className={styles.image} src={corornaImage}/>
             <Cards data={data}/>
             <CountryPicker handleCountryChange={handleCountryChange}/>
             <Chart data={data} country={country}/>

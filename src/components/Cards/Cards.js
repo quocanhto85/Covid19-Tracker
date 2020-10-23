@@ -1,6 +1,6 @@
 import React from "react"
 import styles from "./Cards.module.css";
-import { Card, CardTitle, CardText, Container, Row, Col } from 'reactstrap';
+import { Card, CardTitle, CardText, Container, Row } from 'reactstrap';
 import CountUp from "react-countup";
 
 const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
@@ -37,7 +37,7 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
                         <CardText className="text-muted">{new Date(lastUpdate).toDateString()}</CardText>
                         <CardText>Number of recoveries from COVID-19.</CardText>
                     </Card>
-
+                    
                     <Card body outline color="danger">
                         <CardTitle ><h3 className="text-muted">Deaths</h3></CardTitle>
                         <CardText>

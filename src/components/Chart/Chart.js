@@ -1,24 +1,25 @@
-import React, { useState, useEffect } from "react"
-import { fetchDailyData } from "../../service/request";
+import React, { useState, useEffect, memo } from "react"
 import { Line, Bar } from "react-chartjs-2";
-
+import { Provider, useContexts } from "../../context";
 import styles from "./Chart.module.css";
 
-const Chart = ({ data: {confirmed, deaths, recovered}, country }) => {
-    // console.log(data);
-    const [dailyData, setDailyData] = useState({});
+const ChartImpl = () => {
+    const { dataFetch: {confirmed, recovered, deaths}, country, dailyData } = useContexts();
 
-    useEffect(() => {
-        const fetchAPI = async () => {
-            setDailyData(await fetchDailyData());
-        }
+    // useEffect(() => {
+        console.log(country)
 
-        fetchAPI();
-    }, []);
+        // console.log(confirmed)
+    // }, [country])
+    // const [dailyData, setDailyData] = useState({});
 
-    useEffect(() => {
-        // console.log(dailyData)
-    }, [dailyData])
+    // useEffect(() => {
+    //     const fetchAPI = async () => {
+    //         setDailyData(await fetchDailyData());
+    //     }
+
+    //     fetchAPI();
+    // }, []);
 
     const lineChart = (
         dailyData.length ? (
@@ -47,7 +48,7 @@ const Chart = ({ data: {confirmed, deaths, recovered}, country }) => {
             />
         ) : null
     );
-    
+
     const barChart = (
         confirmed ? (
             <Bar
@@ -64,8 +65,8 @@ const Chart = ({ data: {confirmed, deaths, recovered}, country }) => {
                     }]
                 }}
                 options={{
-                    legend: {display: false},
-                    title: {display: true, text: `Current state in ${country}`}
+                    legend: { display: false },
+                    title: { display: true, text: `Current state in ${country}` }
                 }}
             />
         ) : null
@@ -78,4 +79,6 @@ const Chart = ({ data: {confirmed, deaths, recovered}, country }) => {
     )
 }
 
-export default Chart;
+const Chart = () => <Provider><ChartImpl /></Provider>
+
+export default memo(Chart);

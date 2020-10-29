@@ -16,21 +16,28 @@ export const Provider = ({ children }) => {
     }, [])
 
     const getData = useCallback(async () => {
-        const [dataFetch, dailyData, countries] = await Promise.all([fetchData(), fetchDailyData(), fetchCountries()])
+        const [dataFetch, dailyData, countries] = await Promise.all([
+            fetchData(), 
+            fetchDailyData(), 
+            fetchCountries()])
 
         setDataFetch(dataFetch);
         setDailyData(dailyData);
         setCountries(countries)
     });
 
-    const handleCountryChange = useCallback(async (country) => {
-        if (typeof country !== undefined) {
-            const fetchedData = await fetchData(country);
-            setDataFetch(fetchedData);
-            setCountry(country)
-            console.log("context", country)
+    const handleCountryChange = useCallback(async (selectCountry) => {
+        if (typeof selectCountry !== undefined) {
+            const fetchedData = await fetchData(selectCountry);
+            setDataFetch(fetchedData);          
+            setCountry(selectCountry)         
         }
     });
+
+    useEffect(() => {
+        console.log("context", country)
+    }, [country])
+    
 
     const value = useMemo(() => ({
         loading, dataFetch, dailyData, countries, country, getData, handleCountryChange

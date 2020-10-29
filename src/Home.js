@@ -1,12 +1,15 @@
 import React, { memo, useEffect, useState } from "react";
 import { Cards, Chart, CountryPicker } from "./components";
 import styles from "./Home.module.css"
-import { fetchData } from "./service/request";
 import corornaImage from "./images/image.png";
+import { Provider, useContexts } from "./context";
 
-const Home = () => {
-    const [data, setData] = useState({});
-    const [country, setCountry] = useState("");
+const HomeImpl = () => {
+    const { dataFetch: { confirmed, recovered, deaths }, country, dailyData } = useContexts();
+
+    useEffect(() => {
+        console.log("home", country);
+    }, [country])
 
     return (
         <div className={styles.container}>
@@ -17,5 +20,7 @@ const Home = () => {
         </div>
     )
 }
+
+const Home = () => <Provider><HomeImpl /></Provider>
 
 export default memo(Home);

@@ -4,22 +4,7 @@ import { Provider, useContexts } from "../../context";
 import styles from "./Chart.module.css";
 
 const ChartImpl = () => {
-    const { dataFetch: {confirmed, recovered, deaths}, country, dailyData } = useContexts();
-
-    // useEffect(() => {
-        console.log(country)
-
-        // console.log(confirmed)
-    // }, [country])
-    // const [dailyData, setDailyData] = useState({});
-
-    // useEffect(() => {
-    //     const fetchAPI = async () => {
-    //         setDailyData(await fetchDailyData());
-    //     }
-
-    //     fetchAPI();
-    // }, []);
+    const { dataFetch: { confirmed, recovered, deaths }, country, dailyData } = useContexts();
 
     const lineChart = (
         dailyData.length ? (
@@ -79,6 +64,4 @@ const ChartImpl = () => {
     )
 }
 
-const Chart = () => <Provider><ChartImpl /></Provider>
-
-export default memo(Chart);
+export default memo(ChartImpl);

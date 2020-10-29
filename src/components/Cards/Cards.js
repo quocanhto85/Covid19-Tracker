@@ -2,7 +2,7 @@ import React from "react"
 import styles from "./Cards.module.css";
 import { Card, CardTitle, CardText, Container, Row } from 'reactstrap';
 import CountUp from "react-countup";
-import { Provider, useContexts } from "../../context";
+import { useContexts } from "../../context";
 
 const CardImpl = () => {
     const { dataFetch: { confirmed, recovered, deaths, lastUpdate } } = useContexts();
@@ -61,6 +61,4 @@ const CardImpl = () => {
     }
 }
 
-const Cards = () => <Provider><CardImpl /></Provider>
-
-export default Cards
+export default CardImpl

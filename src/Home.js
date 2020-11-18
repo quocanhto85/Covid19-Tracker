@@ -1,15 +1,10 @@
-import React, { memo, useEffect, useState } from "react";
+import React, { memo } from "react";
 import { Cards, Chart, CountryPicker } from "./components";
 import styles from "./Home.module.css"
 import corornaImage from "./images/image.png";
-import { Provider, useContexts } from "./context";
+import { Provider } from "./context";
 
 const HomeImpl = () => {
-    const { dataFetch: { confirmed, recovered, deaths }, country, dailyData } = useContexts();
-
-    useEffect(() => {
-        console.log("home", country);
-    }, [country])
 
     return (
         <div className={styles.container}>

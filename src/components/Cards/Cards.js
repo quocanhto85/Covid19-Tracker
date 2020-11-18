@@ -8,6 +8,7 @@ const CardImpl = () => {
     const { dataFetch: { confirmed, recovered, deaths, lastUpdate } } = useContexts();
     if (typeof confirmed !== "undefined" && typeof confirmed !== "undefined" && typeof confirmed !== "undefined" && typeof confirmed !== "undefined") {
         return (
+            
             <div className={styles.container}>
                 <Container>
                     <Row>

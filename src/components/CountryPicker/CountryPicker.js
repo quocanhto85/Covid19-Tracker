@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useCallback } from "react";
 import { NativeSelect, FormControl } from "@material-ui/core";
 import styles from "./CountryPicker.module.css";
 import { useContexts } from "../../context";
@@ -7,7 +7,6 @@ const CountryPickerImpl = () => {
     const { handleCountryChange, countries } = useContexts();
     const onChange = useCallback((event) => {
         const { target: { value } } = event;
-
         handleCountryChange(value);
     })
 

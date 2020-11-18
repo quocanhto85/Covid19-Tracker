@@ -34,11 +34,6 @@ export const Provider = ({ children }) => {
         }
     });
 
-    useEffect(() => {
-        console.log("context", country)
-    }, [country])
-    
-
     const value = useMemo(() => ({
         loading, dataFetch, dailyData, countries, country, getData, handleCountryChange
     }), [loading, dataFetch, dailyData, countries, country, getData]);

@@ -1,6 +1,6 @@
-import React, { useState, useEffect, memo } from "react"
+import React, { memo } from "react"
 import { Line, Bar } from "react-chartjs-2";
-import { Provider, useContexts } from "../../context";
+import { useContexts } from "../../context";
 import styles from "./Chart.module.css";
 
 const ChartImpl = () => {

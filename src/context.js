@@ -32,7 +32,7 @@ export const Provider = ({ children }) => {
             setDataFetch(fetchedData);          
             setCountry(selectCountry)         
         }
-    });
+    }, []);
 
     const value = useMemo(() => ({
         loading, dataFetch, dailyData, countries, country, getData, handleCountryChange
